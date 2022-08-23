@@ -5,7 +5,7 @@ and we have 2 main methods
 depending on the command it enters either of these methods 
 and excute the method
 
-#Testing
+# Testing
 we use jassmine library.
 
 Run following commands:
