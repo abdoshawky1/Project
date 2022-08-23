@@ -1,5 +1,5 @@
 function MarsRover(location, direction, grid, obstacles) {
-
+self = this;
         
         this.location = (location === undefined) ? [0, 0] : location;
         this.direction = (direction === undefined) ? 'N' : direction;
@@ -27,9 +27,9 @@ function MarsRover(location, direction, grid, obstacles) {
         };
 
         function resetLocation() {
-            this.location = [
-                (this.location[0] + this.grid[0]) % this.grid[0],
-                (this.location[1] + this.grid[1]) % this.grid[1],
+            self.location = [
+                (self.location[0] + self.grid[0]) % self.grid[0],
+                (self.location[1] + self.grid[1]) % self.grid[1],
             ];
         }
 
@@ -49,19 +49,19 @@ function MarsRover(location, direction, grid, obstacles) {
             yIncrease *= -1;
         }
 
-        var newLocation = [this.location[0] + xIncrease, this.location[1] + yIncrease];
+        var newLocation = [self.location[0] + xIncrease, self.location[1] + yIncrease];
         if (isObstacle(newLocation)) {
             return false;
         }
-        this.location = newLocation;
+        self.location = newLocation;
 
         return true;
 
         }
          function isObstacle(newLocation) {
             for(var index = 0; index < this.obstacles.length; index++) {
-                if (newLocation.toString() == this.obstacles[index].toString()) {
-                    this.status = 'obstacle';
+                if (newLocation.toString() == self.obstacles[index].toString()) {
+                    self.status = 'obstacle';
                     return true;
                 }
             }
@@ -69,61 +69,61 @@ function MarsRover(location, direction, grid, obstacles) {
         }
         function turn(command) {
             var newDirection;
-            switch(this.direction){
+            switch(self.direction){
             case 'N':
             if(command==='r') {
-                this.direction ='E';
-                newDirection = this.direction;
+                self.direction ='E';
+                newDirection = self.direction;
             }
             else if(command==='l'){
-                this.direction ='W';
-                newDirection = this.direction;
+                self.direction ='W';
+                newDirection = self.direction;
 
             }
             break;
             
             case 'S':
             if(command==='r') {
-                this.direction ='W';
-                newDirection = this.direction;
+                self.direction ='W';
+                newDirection = self.direction;
 
             }
             else if(command==='l'){
-                this.direction ='E';
-                newDirection = this.direction;
+                self.direction ='E';
+                newDirection = self.direction;
 
             }
             break;
             
             case 'E':
             if(command==='r') {
-                this.direction ='S';
-                newDirection = this.direction;
+                self.direction ='S';
+                newDirection = self.direction;
 
             }
             else if(command==='l'){
-                this.direction ='N';
-                newDirection = this.direction;
+                self.direction ='N';
+                newDirection = self.direction;
 
             }
             break;
             
             case 'W':
             if(command==='r') {
-                this.direction ='N';
-                newDirection = this.direction;
+                self.direction ='N';
+                newDirection = self.direction;
 
             }
             else if(command==='l'){
-                this.direction ='S';
-                newDirection = this.direction;
+                self.direction ='S';
+                newDirection = self.direction;
 
             }
             break;
             }
 
            
-            this.direction = newDirection ;
+            self.direction = newDirection ;
             
             return true;
                 }
